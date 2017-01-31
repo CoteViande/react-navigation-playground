@@ -66,17 +66,25 @@ export class AllButchersScreen extends React.Component {
 export class Logout extends React.Component {
   render() {
     const { signOut } = this.props
+    const { navigate } = this.props.navigation
     return (
       <View style={styles.container}>
         <Button
           onPress={signOut}
           title="Sign out of CôteViande"
         />
+        <Text>
+          or
+        </Text>
+        <Button
+          onPress={() => navigate('Authenticate')}
+          title="AUTH AGAIN"
+        />
       </View>
     )
   }
 }
-export const LogoutScreen = connect(() => ({}), { signIn })(Logout)
+export const LogoutScreen = connect(() => ({}), { signOut })(Logout)
 
 class FacebookAuth extends React.Component {
   static navigationOptions = {
@@ -101,6 +109,13 @@ class FacebookAuth extends React.Component {
         <Button
           onPress={() => navigate('EmailAuthentication')}
           title="Sign in with Email"
+        />
+        <Text>
+          or
+        </Text>
+        <Button
+          onPress={() => navigate('Home')}
+          title="Try to access Home"
         />
       </View>
     )

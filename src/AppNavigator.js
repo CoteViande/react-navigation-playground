@@ -22,6 +22,7 @@ const MainScreenNavigator = TabNavigator({
   All: { screen: AllButchersScreen },
   Logout: { screen: LogoutScreen },
 }, {
+  initialTab: 'Recent',
   tabBarOptions: {
     activeTintColor: '#e91e63',
   },

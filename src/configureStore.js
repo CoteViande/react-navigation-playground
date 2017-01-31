@@ -4,9 +4,13 @@ import { persistStore, autoRehydrate } from 'redux-persist'
 import { composeWithDevTools } from 'remote-redux-devtools'
 
 import reducer from './reducer'
+import middleware from './middleware'
+import initialization from './initialization'
 
 const configureStore = initialState => {
-  const middlewares = []
+  const middlewares = [
+    middleware,
+  ]
 
   const store = createStore(
     reducer,
@@ -18,10 +22,10 @@ const configureStore = initialState => {
   )
 
   const persistConfig = {
-    blacklist: [],
+    blacklist: ['isInitializationComplete'],
     storage: AsyncStorage,
   }
-  persistStore(store, persistConfig)
+  persistStore(store, persistConfig, initialization(store))
   .purge()
 
   if (module.hot) {

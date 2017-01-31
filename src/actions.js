@@ -5,3 +5,7 @@ export const signIn = () => ({
 export const signOut = () => ({
   type: 'SIGN_OUT',
 })
+
+export const initializationComplete = () => ({
+  type: 'INITIALIZATION_COMPLETE',
+})
