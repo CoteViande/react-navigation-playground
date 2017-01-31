@@ -7,18 +7,18 @@ import AppNavigator from './AppNavigator'
 
 class AppWithNavigationState extends React.Component {
   componentDidMount() {
-    const {
-      dispatch,
-      nav,
-    } = this.props
     BackAndroid.addEventListener('backPress', () => {
+      const {
+        dispatch,
+        nav,
+      } = this.props
       let childNav = nav.routes[nav.index]
-      // FIXME better condition and add TAB support
-      if (childNav.routes[childNav.index].routeName !== 'FacebookAuthentication') {
-        dispatch({ type: 'Back' })
-        return true
+      // FIXME better condition
+      if (childNav.routeName === 'FacebookAuthentication' || (childNav.routes && childNav.routes[childNav.index].routeName === 'Recent')) {
+        return false
       }
-      return false
+      dispatch({ type: 'Back' })
+      return true
     })
   }
 
