@@ -3,22 +3,13 @@ import { BackAndroid } from 'react-native'
 import { connect } from 'react-redux'
 import { addNavigationHelpers } from 'react-navigation'
 
-import AppNavigator from './AppNavigator'
+import AppNavigator, { backAndroidHandler } from './AppNavigator'
 
 class AppWithNavigationState extends React.Component {
   componentDidMount() {
     BackAndroid.addEventListener('backPress', () => {
-      const {
-        dispatch,
-        nav,
-      } = this.props
-      let childNav = nav.routes[nav.index]
-      // FIXME better condition
-      if (childNav.routeName === 'FacebookAuthentication' || (childNav.routes && childNav.routes[childNav.index].routeName === 'Recent')) {
-        return false
-      }
-      dispatch({ type: 'Back' })
-      return true
+      const { dispatch, nav } = this.props
+      return backAndroidHandler(dispatch, nav)
     })
   }
 

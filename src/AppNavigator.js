@@ -54,4 +54,24 @@ const AppNavigator = StackNavigator({
   },
 })
 
+export const backAndroidHandler = (dispatch, nav) => {
+  if (shouldCloseApp(nav)) return false
+  dispatch({ type: 'Back' })
+  return true
+}
+
+const shouldCloseApp = nav => (
+  isAuthenticationInitialScreen(nav)
+  || isHomeInitialScreen(nav)
+)
+
+const isAuthenticationInitialScreen = nav => (
+  nav.routes[nav.index].routeName === 'FacebookAuthentication'
+)
+
+const isHomeInitialScreen = nav => {
+  let childNav = nav.routes[nav.index]
+  return (childNav.routes && childNav.routes[childNav.index].routeName === 'Recent')
+}
+
 export default AppNavigator
