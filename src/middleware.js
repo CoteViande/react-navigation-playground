@@ -7,18 +7,14 @@ const middleware = store => next => action => {
   if (prevState.isAuthenticated !== nextState.isAuthenticated) {
     const nextScreen = nextState.isAuthenticated
       ? 'Home'
-      : 'Authenticate'
+      : 'FacebookAuthentication'
     dispatch({
-      type: 'Navigate',
-      routeName: nextScreen,
-      action: {
-        type: 'Reset',
-        index: 0,
-        action: {
-          type: 'Navigate',
-          routeName: 'Main'
-        }
-      },
+      type: 'Reset',
+      index: 0,
+      actions: [{
+        type: 'Navigate',
+        routeName: nextScreen,
+      }],
     })
   }
   return result

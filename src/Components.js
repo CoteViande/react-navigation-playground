@@ -126,9 +126,12 @@ export const FacebookAuthScreen = connect(() => ({}), { signIn })(FacebookAuth)
 export class EmailAuth extends React.Component {
   static navigationOptions = {
     title: 'Authenticate',
-    style: {
-      elevation: 0,
-      backgroundColor: 'pink',
+    header: {
+      visible: true,
+      style: {
+        elevation: 0,
+        backgroundColor: 'pink',
+      },
     }
   }
 

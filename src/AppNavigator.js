@@ -38,19 +38,20 @@ const MainScreenNavigator = TabNavigator({
     tabBar: {
       style: {
         elevation: 0,
-        backgroundColor: 'pink',
+        backgroundColor: 'red',
       },
     }
   },
 })
 
 const AppNavigator = StackNavigator({
-  Authenticate: { screen: AuthenticateNavigator },
+  FacebookAuthentication: { screen: FacebookAuthScreen },
+  EmailAuthentication: { screen: EmailAuthScreen },
   Home: { screen: MainScreenNavigator },
   Butchery: { screen: ButcheryScreen },
 }, {
   headerMode: 'screen', // float or screen or none
-  initialRouteName: 'Authenticate',
+  initialRouteName: 'FacebookAuthentication',
   navigationOptions: {
     header: {
       visible: false,
