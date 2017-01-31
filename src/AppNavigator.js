@@ -12,11 +12,6 @@ import {
   EmailAuthScreen,
 } from './Components'
 
-const AuthenticateNavigator = StackNavigator({
-  FacebookAuthentication: { screen: FacebookAuthScreen },
-  EmailAuthentication: { screen: EmailAuthScreen },
-})
-
 const MainScreenNavigator = TabNavigator({
   Recent: { screen: RecentButcheriesScreen },
   All: { screen: AllButchersScreen },

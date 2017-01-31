@@ -7,7 +7,7 @@ const initialization = store => () => {
   initialCheckUp: try {
     console.log('INITIALIZATION...')
   } catch (error) {
-    console.log('intializingScript.js // error happened: ', error)
+    console.log('intializing.js // error happened: ', error)
   }
   dispatch(initializationComplete())
 }
